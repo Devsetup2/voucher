@@ -13,10 +13,16 @@
 		<link rel="stylesheet" type="text/css" href="https://tympanus.net/Tutorials/TheAviator/css/game.css" />
 		<script type="text/javascript" src="https://tympanus.net/Tutorials/TheAviator/js/TweenMax.min.js"></script>
 		<script type="text/javascript" src="https://tympanus.net/Tutorials/TheAviator/js/three.min.js"></script>
-		<script type="text/javascript" src="aviatorjs.js" /></script>
+		<script type="text/javascript" src="https://devsetup2.github.io/astroid/aviatorjs.js" /></script>
 		
 	</head>
 	<body>
+		<!-- Arkaplan müziği -->
+		<audio id="bgMusic" loop autoplay>
+			<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+			Tarayıcınız audio elementini desteklemiyor.
+		</audio>
+		
 		<div class="game-holder" id="gameHolder">
 			<div class="header">
 				<h1><span>the</span>Aviator</h1>
@@ -51,5 +57,18 @@
 			<a class="demo-link" href="https://tympanus.net/Tutorials/TheAviator/part1.html">Part 1</a>
 			<a class="demo-link" href="https://tympanus.net/Tutorials/TheAviator/part2.html">Part 2</a>
 		</nav>
+		
+		<script>
+			// Sayfa yüklendiğinde müziği otomatik başlat (tarayıcı politikalarına uyumlu)
+			document.addEventListener('DOMContentLoaded', function() {
+				var audio = document.getElementById('bgMusic');
+				audio.volume = 0.3; // Ses seviyesini düşür
+				
+				// Kullanıcı etkileşimi gerektiğinde müziği başlat
+				document.body.addEventListener('click', function() {
+					audio.play().catch(e => console.log("Müzik çalınamadı:", e));
+				}, { once: true });
+			});
+		</script>
 	</body>
 </html>
